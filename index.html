@@ -48,7 +48,8 @@
 	  height: 176px;
 	  flex-direction: column;
 	  position: relative;
-	  width: 300px;  
+	  width: 300px; 
+	  transition: 1s; 
 	}
 	
 	.card:hover::before {
@@ -275,14 +276,14 @@
 		
 	}
 
-	.penis {
+	.THEY_NEED_TO_WASH_THEIR_HANDS {
 
 	}
 </style>
 
 <body>
 <div id="cards">
-  <div class="card">
+  <div class="card" id="noxcard">
     <div class="card-content">
       <div class="card-image noxImage">
         <i class="fa-duotone fa-apartment"></i>
@@ -349,6 +350,10 @@
 </div>
 </body>
 <script>
+	var expanded = true
+	var card_specs = [document.getElementById("noxcard").offsetWidth, document.getElementById("noxcard").offsetHeight]
+	console.log(card_specs)
+
 	document.getElementById("cards").onmousemove = e => {
 	  for(const card of document.getElementsByClassName("card")) {
 	    const rect = card.getBoundingClientRect(),
@@ -358,6 +363,22 @@
 	    card.style.setProperty("--mouse-x", `${x}px`);
 	    card.style.setProperty("--mouse-y", `${y}px`);
 	  };
+	}
+
+	document.getElementById("noxcard").onclick = e => {
+		console.log(expanded)
+		var x = e.target.parentNode.offsetWidth
+		var y = e.target.parentNode.offsetHeight
+
+		e.target.style.setProperty("width", expanded?`${x}px`:`${card_specs[0]}px`)
+		e.target.style.setProperty("height", expanded?`${y}px`:`${card_specs[1]}px`)
+		
+		for (const card of document.getElementsByClassName("card")) {
+			if (card != e.target) {
+				card.style.setProperty("display", expanded?"none":"unset")
+			}
+		}
+		expanded = !expanded
 	}
 </script>
 

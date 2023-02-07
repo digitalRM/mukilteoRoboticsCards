@@ -1,4 +1,28 @@
-html, body {
-  height: 100%;
-  width: 100%;
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap');
+
+:root {
+  --bg-color: #3f4068;
+  --card-color: #37385c;
+}
+
+body {
+  align-items: center;
+  background-color: var(--bg-color);
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  margin: 0px;
+  overflow: hidden;
+  padding: 0px;
+}
+
+#cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 1rem;
+}
+
+.card {
+  background-color: white;
 }
