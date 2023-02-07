@@ -51,6 +51,14 @@
 	  width: 300px; 
 	  transition: 1s ease-out; 
 	}
+
+	.poopoo.card > * {
+		display: none;
+	}
+
+	.peepee.card > * {
+		display: unset;
+	}
 	
 	.card:hover::before {
 	  opacity: 1;
@@ -361,7 +369,8 @@
 		
 		for (const card of document.getElementsByClassName("card")) {
 			if (card != e.target) {
-				card.style.setProperty("display", expanded?"none":"unset")
+				card.style.setProperty("width", expanded?`0px`:`${card_specs[0]}px`)
+				card.style.setProperty("height", expanded?`0px`:`${card_specs[1]}px`)
 			}
 		}
 		expanded = !expanded
